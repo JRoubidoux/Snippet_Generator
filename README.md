@@ -5,7 +5,18 @@ This repository was made to be a useful tool to anyone who is using object detec
 
 ## Useful info (Jargon)
 This repository expects data to be formatted in the following ways.
-    - text data is to be stored in a file that pandas can ingest for a dataframe, .csv or .tsv are common file types: the following columns and dtypes: reel_filename: str, image_filename: str, snip_name: str, x1: int, y1: int, ... x4: int, y4: int
+    - text data is to be stored in a file that pandas can ingest for a dataframe, .csv or .tsv are common file types. The following columns and dtypes that are to be found in your dataframe: 
+        reel_filename: str
+        image_filename: str
+        snip_name: str
+        x1: int
+        y1: int
+        .
+        .
+        .
+        x4: int
+        y4: int
+    
     - image data: Any image that is compatible with PIL will work, the generator currently outputs .png files only. Images should be stored in .tar files (This is a common archive format) and should have the following formats: the name of the .tar file will correspond to the reel_filename in the text data. The image filenames in the .tar should correspond to the image_filename column in the text data. 
 
 The snippet generator accepts one pandas df for the text data, and a list to all the .tar files for the images. 
