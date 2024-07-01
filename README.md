@@ -1,11 +1,13 @@
 # Snippet_Generator
-This repository is forked from Brigham Young University's Record Linking Lab. This fork will likely be out of sync with BYU's as the code that is here is authored by me, with the exception of some small bits of code in the test cases. As BYU decides to update or change these tools, I'd like my work to be preserved for people to see as well. :)
+This repository is forked from Brigham Young University's Record Linking Lab. This fork will likely be out of sync with BYU's as the code that is here is authored by me, with the exception of some small bits of code in the test cases. As BYU decides to update or change these tools, I'd like my work to be preserved for people to see as well.
 
 This repository was made to be a useful tool to anyone who is using object detection or semantic segmentation models to find and isolate objects in an image, namely boxes (fields) on tabular documents. Given a collection of images and a dataset that defines box points on the images, this code will produce new images that are the "crops" or "snippets" rendered by cropping the image to the bounding box in the dataset. See below for more details. 
 
 ## Useful info (Jargon)
 This repository expects data to be formatted in the following ways.
-    text data is to be stored in a file that pandas can ingest for a dataframe, .csv or .tsv are common file types. The following columns and dtypes that are to be found in your dataframe: 
+
+Text data is to be stored in a file that pandas can ingest for a dataframe, .csv or .tsv are common file types. The following columns with respective dtypes should be found in your dataframe: 
+
         reel_filename: str
         image_filename: str
         snip_name: str
@@ -16,12 +18,12 @@ This repository expects data to be formatted in the following ways.
         .
         x4: int
         y4: int
-    
-    image data: Any image that is compatible with PIL will work, the generator currently outputs .png files only. Images should be stored in .tar files (This is a common archive format) and should have the following formats: the name of the .tar file will correspond to the reel_filename in the text data. The image filenames in the .tar should correspond to the image_filename column in the text data. 
+
+Image data: Any image that is compatible with PIL will work, the generator currently outputs .png files only. Images should be stored in .tar files (This is a common archive format) and should have the following formats: the name of the .tar file will correspond to the reel_filename in the text data. The image filenames in the .tar should correspond to the image_filename column in the text data. 
 
 The snippet generator accepts one pandas df for the text data, and a list to all the .tar files for the images. 
 
-Within the snippet generator, the df is converted into a dictionary. When snippets are solicited from the snippet generator, the tarfiles are streamed and if a tarfile, imagefile and a field with box points is found in the dictionary, the generator will get all the snippets for that image. 
+Within the snippet generator, the dataframe is converted into a dictionary. When snippets are solicited from the snippet generator, the tarfiles are streamed and if a tarfile, imagefile and a field with box points is found in the dictionary, the generator will get all the snippets for that image. 
 
 ## Getting Started
 ### Prerequisites
